@@ -1,6 +1,6 @@
 package by.epam.task4.entity;
 
-public class User {
+public class User extends Entity{
     private int id;
     private String login;
     private String password;

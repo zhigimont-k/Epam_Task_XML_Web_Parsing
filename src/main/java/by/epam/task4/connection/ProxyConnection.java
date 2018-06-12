@@ -8,14 +8,14 @@ import java.util.concurrent.Executor;
 public class ProxyConnection {
     private Connection connection;
 
-    ProxyConnection(Connection connection){
+    ProxyConnection(Connection connection) {
         this.connection = connection;
     }
 
-    void closeConnection() throws ConnectionPoolException{
-        try{
+    void closeConnection() throws ConnectionPoolException {
+        try {
             connection.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new ConnectionPoolException("Couldn't close connection", e);
         }
     }
@@ -53,7 +53,7 @@ public class ProxyConnection {
     }
 
     public void close() throws SQLException {
-        connection.close();
+        ConnectionPool.getInstance().releaseConnection(this);
     }
 
     public boolean isClosed() throws SQLException {
