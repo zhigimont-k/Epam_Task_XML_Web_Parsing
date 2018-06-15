@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://www.example.com/papers"
+           xmlns:tns="https://www.example.com/papers"
+           elementFormDefault="qualified">
+    <xs:element name="papers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="paper" type="tns:Paper" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Paper">
+        <xs:sequence>
+            <xs:element name="color" type="xs:boolean"/>
+            <xs:element name="monthly" type="xs:boolean"/>
+            <xs:element name="volume" type="xs:positiveInteger"/>
+        </xs:sequence>
+        <xs:attribute name="type">
+            <xs:simpleType>
+                <xs:restriction base="tns:Paper">
+                    <xs:enumeration value="tns:Newspaper"/>
+                    <xs:enumeration value="tns:Magazine"/>
+                    <xs:enumeration value="tns:Booklet"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:ID" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Newspaper">
+        <xs:complexContent>
+            <xs:extension base="tns:Paper">
+
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Magazine">
+        <xs:complexContent>
+            <xs:extension base="tns:Paper">
+
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Booklet">
+        <xs:complexContent>
+            <xs:extension base="tns:Paper">
+
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>
