@@ -14,8 +14,6 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//DriverManager.registerDriver
-
 public class ConnectionPool {
     private static Logger logger = LogManager.getLogger();
     private static ConnectionPool instance = null;
