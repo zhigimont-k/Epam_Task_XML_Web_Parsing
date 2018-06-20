@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
@@ -18,8 +19,8 @@ import java.util.regex.Pattern;
 public class ConnectionPool {
     private static Logger logger = LogManager.getLogger();
     private static ConnectionPool instance = null;
-    private LinkedBlockingQueue<ProxyConnection> availableConnections;
-    private LinkedBlockingQueue<ProxyConnection> unavailableConnections;
+    private BlockingQueue<ProxyConnection> availableConnections;
+    private BlockingQueue<ProxyConnection> unavailableConnections;
     private static AtomicBoolean isCreated = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
 
@@ -33,7 +34,6 @@ public class ConnectionPool {
     private static final int DEFAULT_POOL_SIZE = 5;
 
     private ConnectionPool() {
-
     }
 
     public void initPool() {
@@ -45,8 +45,8 @@ public class ConnectionPool {
                 availableConnections.add(connection);
             }
         } catch (SQLException e) {
-            logger.fatal("Couldn't open connection.", e);
-            throw new RuntimeException("Couldn't open connection.", e);
+            logger.fatal("Couldn't init connection pool.", e);
+            throw new RuntimeException("Couldn't init connection pool.", e);
         }
     }
 
@@ -91,30 +91,39 @@ public class ConnectionPool {
             connection = availableConnections.take();
             unavailableConnections.put(connection);
         } catch (InterruptedException e) {
-            throw new ConnectionPoolException(e);
+            throw new ConnectionPoolException("Couldn't get connection", e);
         }
         return connection;
     }
 
-    public void releaseConnection(ProxyConnection connection) {
+    public void releaseConnection(ProxyConnection connection) throws ConnectionPoolException{
         try {
             if (!connection.getAutoCommit()) {
                 connection.setAutoCommit(true);
             }
-            //unavailableConnections.remove connection
-        } catch (SQLException e) {
-            logger.catching(e);
-        }
-        unavailableConnections.remove(connection);
-        try {
+            unavailableConnections.remove(connection);
             availableConnections.put(connection);
-        } catch (InterruptedException e) {
-            logger.catching(e);
+        } catch (SQLException | InterruptedException e) {
+            throw new ConnectionPoolException(e);
         }
     }
 
-    //TODO
-    public void destroyPool() {
+    public void closeConnectionPool() throws ConnectionPoolException{
+        try {
+            closeConnectionQueue(unavailableConnections);
+            closeConnectionQueue(availableConnections);
+        } catch (SQLException e) {
+            throw new ConnectionPoolException("Couldn't close connection queue", e);
+        }
+    }
 
+    private void closeConnectionQueue(BlockingQueue<ProxyConnection> queue) throws SQLException{
+        ProxyConnection connection;
+        while ((connection = queue.poll()) != null) {
+            if (!connection.getAutoCommit()) {
+                connection.commit();
+            }
+            connection.close();
+        }
     }
 }

@@ -7,7 +7,7 @@
         <xs:color>false</xs:color>
         <xs:volume>200</xs:volume>
         <xs:subscription-index>12445800</xs:subscription-index>
-        <xs:first-publication>12-12-1970</xs:first-publication>
+        <xs:first-publication>1970-12-12</xs:first-publication>
     </xs:newspaper>
 
     <xs:newspaper id="2" name="Monthly Newspaper">
@@ -15,7 +15,7 @@
         <xs:color>false</xs:color>
         <xs:volume>42</xs:volume>
         <xs:subscription-index>278665123</xs:subscription-index>
-        <xs:first-publication>02-04-2000</xs:first-publication>
+        <xs:first-publication>2000-04-02</xs:first-publication>
     </xs:newspaper>
 
     <xs:magazine id="3" name="Some magazine">
@@ -24,7 +24,7 @@
         <xs:glossy>true</xs:glossy>
         <xs:volume>300</xs:volume>
         <xs:subscription-index>65827465</xs:subscription-index>
-        <xs:first-publication>04-08-2015</xs:first-publication>
+        <xs:first-publication>2015-08-04</xs:first-publication>
     </xs:magazine>
 
     <xs:magazine id="4" name="Some other magazine">
@@ -33,7 +33,7 @@
         <xs:glossy>false</xs:glossy>
         <xs:volume>60</xs:volume>
         <xs:subscription-index>76683550</xs:subscription-index>
-        <xs:first-publication>11-01-2008</xs:first-publication>
+        <xs:first-publication>2008-01-11</xs:first-publication>
     </xs:magazine>
 
     <xs:magazine id="5" name="Elle">
@@ -42,7 +42,7 @@
         <xs:glossy>true</xs:glossy>
         <xs:volume>120</xs:volume>
         <xs:subscription-index>65588476</xs:subscription-index>
-        <xs:first-publication>09-11-1999</xs:first-publication>
+        <xs:first-publication>1999-11-09</xs:first-publication>
     </xs:magazine>
 
     <xs:magazine id="6" name="Il">
@@ -51,7 +51,7 @@
         <xs:glossy>true</xs:glossy>
         <xs:volume>185</xs:volume>
         <xs:subscription-index>23315065</xs:subscription-index>
-        <xs:first-publication>10-02-1995</xs:first-publication>
+        <xs:first-publication>1995-02-10</xs:first-publication>
     </xs:magazine>
 
     <xs:booklet id="7" name="Gastrofest booklet">
@@ -59,7 +59,7 @@
         <xs:color>true</xs:color>
         <xs:glossy>false</xs:glossy>
         <xs:volume>2</xs:volume>
-        <xs:first-publication>07-08-2017</xs:first-publication>
+        <xs:first-publication>2017-08-07</xs:first-publication>
     </xs:booklet>
 
     <xs:booklet id="8" name="OSTIS booklet">
@@ -67,7 +67,7 @@
         <xs:color>true</xs:color>
         <xs:glossy>false</xs:glossy>
         <xs:volume>5</xs:volume>
-        <xs:first-publication>17-02-2011</xs:first-publication>
+        <xs:first-publication>2011-02-17</xs:first-publication>
     </xs:booklet>
 
     <xs:booklet id="9" name="BSUIR booklet">
@@ -75,7 +75,7 @@
         <xs:color>true</xs:color>
         <xs:glossy>false</xs:glossy>
         <xs:volume>3</xs:volume>
-        <xs:first-publication>31-08-2015</xs:first-publication>
+        <xs:first-publication>2015-08-31</xs:first-publication>
     </xs:booklet>
 
     <xs:magazine id="10" name="Yet another magazine">
@@ -84,7 +84,7 @@
         <xs:glossy>true</xs:glossy>
         <xs:volume>40</xs:volume>
         <xs:subscription-index>56648803</xs:subscription-index>
-        <xs:first-publication>14-03-2018</xs:first-publication>
+        <xs:first-publication>2013-03-14</xs:first-publication>
     </xs:magazine>
 
     <xs:magazine id="11" name="We need more magazines">
@@ -93,7 +93,7 @@
         <xs:glossy>true</xs:glossy>
         <xs:volume>58</xs:volume>
         <xs:subscription-index>11938803</xs:subscription-index>
-        <xs:first-publication>15-10-2013</xs:first-publication>
+        <xs:first-publication>2013-10-15</xs:first-publication>
     </xs:magazine>
 
     <xs:magazine id="12" name="Another magazine">
