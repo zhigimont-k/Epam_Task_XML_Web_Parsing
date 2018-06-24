@@ -119,7 +119,11 @@ public class ConnectionPool {
 
     //TODO
     private void deregisterDrivers(){
-
+        try {
+            DriverManager.deregisterDriver(DriverManager.getDriver(url));
+        } catch (SQLException e){
+            logger.error("Couldn't deregister driver", e);
+        }
     }
 
     private void closeConnectionQueue(BlockingQueue<ProxyConnection> queue) throws SQLException{
