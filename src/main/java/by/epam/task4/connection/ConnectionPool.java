@@ -1,6 +1,5 @@
 package by.epam.task4.connection;
 
-import com.mysql.jdbc.Driver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class ConnectionPool {
     private static Logger logger = LogManager.getLogger();
-    private static ConnectionPool instance = null;
+    private static ConnectionPool instance;
     private BlockingQueue<ProxyConnection> availableConnections;
     private BlockingQueue<ProxyConnection> unavailableConnections;
     private static AtomicBoolean isCreated = new AtomicBoolean(false);
@@ -32,9 +31,11 @@ public class ConnectionPool {
     private static final int DEFAULT_POOL_SIZE = 5;
 
     private ConnectionPool() {
+        registerDriver();
+        initPool();
     }
 
-    public void initPool() {
+    private void initPool() {
         try {
             availableConnections = new LinkedBlockingQueue<>();
             unavailableConnections = new LinkedBlockingQueue<>();
@@ -48,7 +49,7 @@ public class ConnectionPool {
         }
     }
 
-    public void registerDriver() throws ConnectionPoolException {
+    private void registerDriver() {
         ResourceBundle bundle = ResourceBundle.getBundle(ConnectionData.BASE_NAME);
         driver = bundle.getString(ConnectionData.DATABASE_DRIVER);
         url = bundle.getString(ConnectionData.DATABASE_URL);
@@ -62,7 +63,7 @@ public class ConnectionPool {
         try {
             DriverManager.registerDriver(DriverManager.getDriver(url));
         } catch (SQLException e) {
-            throw new ConnectionPoolException("Couldn't register driver", e);
+            throw new RuntimeException("Couldn't register driver", e);
         }
     }
 
@@ -113,6 +114,12 @@ public class ConnectionPool {
         } catch (SQLException e) {
             throw new ConnectionPoolException("Couldn't close connection queue", e);
         }
+        deregisterDrivers();
+    }
+
+    //TODO
+    private void deregisterDrivers(){
+
     }
 
     private void closeConnectionQueue(BlockingQueue<ProxyConnection> queue) throws SQLException{
@@ -121,7 +128,7 @@ public class ConnectionPool {
             if (!connection.getAutoCommit()) {
                 connection.commit();
             }
-            connection.close();
+            connection.closeConnection();
         }
     }
 }
