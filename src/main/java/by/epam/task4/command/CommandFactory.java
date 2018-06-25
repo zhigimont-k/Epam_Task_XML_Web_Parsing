@@ -13,8 +13,8 @@ public final class CommandFactory {
         return instance;
     }
 
-    public Command initCommand(CommandType type) throws UnknownCommandException {
-        Command command;
+    public Command initCommand(CommandType type) {
+        Command command = null;
         switch (type) {
             case REGISTER:
                 command = new RegisterCommand();
@@ -31,8 +31,6 @@ public final class CommandFactory {
             case CHANGE_LOCALE:
                 command = new ChangeLocaleCommand();
                 break;
-            default:
-                throw new UnknownCommandException("Unknown command type.");
         }
         return command;
     }
