@@ -7,27 +7,27 @@
     <%--<fmt:setLocale value="${sessionScope.local}"/>--%>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.text.signin" var="signinMessage"/>
+    <fmt:message bundle="${locale}" key="locale.text.signup" var="signupMessage"/>
     <fmt:message bundle="${locale}" key="locale.text.login" var="loginLabel"/>
     <fmt:message bundle="${locale}" key="locale.text.password" var="passwordLabel"/>
-    <fmt:message bundle="${locale}" key="locale.button.signin" var="signinButton"/>
-    <fmt:message bundle="${locale}" key="locale.text.noAccountYet" var="registerNow"/>
-    <fmt:message bundle="${locale}" key="locale.text.signup" var="signUp"/>
+    <fmt:message bundle="${locale}" key="locale.button.signup" var="signupButton"/>
+    <fmt:message bundle="${locale}" key="locale.text.haveAccountAlready" var="loginNow"/>
+    <fmt:message bundle="${locale}" key="locale.text.signin" var="signIn"/>
 
-    <title>${signinMessage}</title>
+    <title>${signupMessage}</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
-<form name="loginForm" method="POST" action="app">
-    <input type="hidden" name="command" value="login"/>
+<form name="signupForm" method="POST" action="app">
+    <input type="hidden" name="command" value="register"/>
     ${loginLabel}<br/>
     <input type="text" name="login" value=""/>
     <br/>${passwordLabel}<br/>
     <input type="password" name="password" value=""/>
     <br/>
-    <input type="submit" value="${signinButton}"/>
+    <input type="submit" value="${signupButton}"/>
     <br/>
-    ${registerNow} <a href="/jsp/register.jsp">${signUp}</a>
+    ${loginNow} <a href="/jsp/login.jsp">${signIn}</a>
 </form>
 </body>
 </html>

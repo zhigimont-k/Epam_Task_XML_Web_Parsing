@@ -19,8 +19,4 @@ public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-    private void processRequest(HttpServletRequest request, HttpServletResponse response){
-
-    }
 }
