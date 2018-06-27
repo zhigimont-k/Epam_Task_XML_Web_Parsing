@@ -3,20 +3,30 @@ package by.epam.task4.entity.paper;
 import java.util.Objects;
 
 public class Booklet extends Paper {
-    private boolean isGlossy;
+    private boolean gloss;
 
-    public boolean isGlossy() {
-        return isGlossy;
+    public boolean getGloss() {
+        return gloss;
     }
 
-    public void setGlossy(boolean glossy) {
-        isGlossy = glossy;
+    public void setGloss(boolean glossy) {
+        gloss = glossy;
+    }
+
+    @Override
+    public void setSubscriptionIndex(int postIndex) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Booklets can't have subscription index");
+    }
+
+    @Override
+    public int getSubscriptionIndex() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Booklets can't have subscription index");
     }
 
     @Override
     public String toString() {
         return "Booklet{" +
-                "isGlossy=" + isGlossy +
+                "gloss=" + gloss +
                 ", id=" + id +
                 ", title='" + title + '\'' +
                 ", color=" + color +

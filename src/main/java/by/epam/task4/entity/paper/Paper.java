@@ -58,5 +58,12 @@ public abstract class Paper extends Entity {
         this.firstPublicationDate = firstPublicationDate;
     }
 
+    abstract public boolean getGloss() throws UnsupportedOperationException;
+
+    abstract public void setGloss(boolean glossy) throws UnsupportedOperationException;
+
+    abstract public int getSubscriptionIndex() throws UnsupportedOperationException;
+
+    abstract public void setSubscriptionIndex(int postIndex) throws UnsupportedOperationException;
 
 }

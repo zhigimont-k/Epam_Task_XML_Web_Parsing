@@ -1,32 +1,34 @@
 package by.epam.task4.entity.paper;
 
-import java.util.Objects;
-
 public class Magazine extends Paper {
-    private boolean isGlossy;
-    private int postIndex;
+    private boolean gloss;
+    private int subscriptionIndex;
 
-    public boolean isGlossy() {
-        return isGlossy;
+    @Override
+    public boolean getGloss() {
+        return gloss;
     }
 
-    public void setGlossy(boolean glossy) {
-        isGlossy = glossy;
+    @Override
+    public void setGloss(boolean glossy) {
+        gloss = glossy;
     }
 
-    public int getPostIndex() {
-        return postIndex;
+    @Override
+    public int getSubscriptionIndex() {
+        return subscriptionIndex;
     }
 
-    public void setPostIndex(int postIndex) {
-        this.postIndex = postIndex;
+    @Override
+    public void setSubscriptionIndex(int postIndex) {
+        this.subscriptionIndex = postIndex;
     }
 
     @Override
     public String toString() {
         return "Magazine{" +
-                "isGlossy=" + isGlossy +
-                ", postIndex=" + postIndex +
+                "gloss=" + gloss +
+                ", subscriptionIndex=" + subscriptionIndex +
                 ", id=" + id +
                 ", title='" + title + '\'' +
                 ", color=" + color +
@@ -46,13 +48,13 @@ public class Magazine extends Paper {
         }
         Magazine magazine = (Magazine) o;
         return id == magazine.id && title.equals(magazine.title) &&
-                firstPublicationDate.equals(magazine.firstPublicationDate) && postIndex == magazine.postIndex;
+                firstPublicationDate.equals(magazine.firstPublicationDate) && subscriptionIndex == magazine.subscriptionIndex;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + title.hashCode() + firstPublicationDate.hashCode() + postIndex;
+        result = 31 * result + title.hashCode() + firstPublicationDate.hashCode() + subscriptionIndex;
         return result;
     }
 }

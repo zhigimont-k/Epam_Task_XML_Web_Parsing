@@ -6,7 +6,7 @@
     <servlet>
         <display-name>Displayname</display-name>
         <servlet-name>Controller1</servlet-name>
-        <servlet-class>by.epam.task4.controller.Controller</servlet-class>
+        <servlet-class>by.epam.task4.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller1</servlet-name>

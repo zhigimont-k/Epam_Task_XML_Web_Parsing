@@ -5,24 +5,24 @@ public class ParserBuilderFactory {
 
     private ParserBuilderFactory(){}
 
-    public ParserBuilderFactory getInstance() {
+    public static ParserBuilderFactory getInstance() {
         if (instance == null) {
             instance = new ParserBuilderFactory();
         }
         return instance;
     }
 
-    public AbstractParserBuilder initBuilder(String type) throws ParserBuilderFactoryException{
-        AbstractParserBuilder builder;
+    public PaperParserBuilder initBuilder(String type) throws ParserBuilderFactoryException{
+        PaperParserBuilder builder;
         switch(type){
             case "DOM":
-                builder = new DOMParserBuilder();
+                builder = new DOMPaperParser();
                 break;
             case "SAX":
-                builder = new SAXParserBuilder();
+                builder = new SAXPaperParser();
                 break;
             case "StAX":
-                builder = new StAXParserBuilder();
+                builder = new StAXPaperParser();
                 break;
             default:
                 throw new ParserBuilderFactoryException("Illegal parser type.");

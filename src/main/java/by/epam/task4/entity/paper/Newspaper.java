@@ -1,22 +1,36 @@
 package by.epam.task4.entity.paper;
 
-import java.util.Objects;
-
 public class Newspaper extends Paper {
-    private int postIndex;
+    private int subscriptionIndex;
 
-    public int getPostIndex() {
-        return postIndex;
+    public Newspaper(){
+
     }
 
-    public void setPostIndex(int postIndex) {
-        this.postIndex = postIndex;
+    @Override
+    public int getSubscriptionIndex() {
+        return subscriptionIndex;
+    }
+
+    @Override
+    public void setSubscriptionIndex(int postIndex) {
+        this.subscriptionIndex = postIndex;
+    }
+
+    @Override
+    public boolean getGloss() throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Newspaper can't be glossy");
+    }
+
+    @Override
+    public void setGloss(boolean glossy) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException("Newspaper can't be glossy");
     }
 
     @Override
     public String toString() {
         return "Newspaper{" +
-                "postIndex=" + postIndex +
+                "subscriptionIndex=" + subscriptionIndex +
                 ", id=" + id +
                 ", title='" + title + '\'' +
                 ", color=" + color +
@@ -36,13 +50,13 @@ public class Newspaper extends Paper {
         }
         Newspaper newspaper = (Newspaper) o;
         return id == newspaper.id && title.equals(newspaper.title) &&
-                firstPublicationDate.equals(newspaper.firstPublicationDate) && postIndex == newspaper.postIndex;
+                firstPublicationDate.equals(newspaper.firstPublicationDate) && subscriptionIndex == newspaper.subscriptionIndex;
     }
 
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + title.hashCode() + firstPublicationDate.hashCode() + postIndex;
+        result = 31 * result + title.hashCode() + firstPublicationDate.hashCode() + subscriptionIndex;
         return result;
     }
 }
