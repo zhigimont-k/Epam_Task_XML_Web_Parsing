@@ -1,13 +1,26 @@
 package by.epam.task4.builder;
 
+import by.epam.task4.entity.paper.Paper;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class StAXParserTest {private static final String FILEPATH = "data/papers.xml";
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class StAXParserTest {
+    private static final String FILEPATH = "data/test.xml";
 
     @Test
     public void parse() throws PaperParserException, ParserBuilderFactoryException{
         ParserBuilderFactory factory = ParserBuilderFactory.getInstance();
         PaperParserBuilder parser = factory.initBuilder("STAX");
-        parser.parse(FILEPATH);
+        Set<Paper> resultSet = parser.parse(FILEPATH);
+        List<Paper> result = resultSet.stream()
+                .sorted(Comparator.comparing(Paper::getId))
+                .collect(Collectors.toList());
+
+        Assert.assertEquals(SAXParserTest.expected, result);
     }
 }

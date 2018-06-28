@@ -24,10 +24,6 @@ class DOMPaperParser extends PaperParserBuilder {
     private DocumentBuilder documentBuilder;
 
     DOMPaperParser() throws PaperParserException {
-        initDocumentBuilder();
-    }
-
-    private void initDocumentBuilder() throws PaperParserException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             documentBuilder = factory.newDocumentBuilder();
