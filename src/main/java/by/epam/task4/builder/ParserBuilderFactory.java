@@ -3,7 +3,8 @@ package by.epam.task4.builder;
 public class ParserBuilderFactory {
     private static ParserBuilderFactory instance = new ParserBuilderFactory();
 
-    private ParserBuilderFactory(){}
+    private ParserBuilderFactory() {
+    }
 
     public static ParserBuilderFactory getInstance() {
         if (instance == null) {
@@ -12,11 +13,15 @@ public class ParserBuilderFactory {
         return instance;
     }
 
-    public PaperParserBuilder initBuilder(String type) throws ParserBuilderFactoryException{
+    public PaperParserBuilder initBuilder(String type) throws ParserBuilderFactoryException {
         PaperParserBuilder builder;
-        switch(type){
+        switch (type) {
             case "DOM":
-                builder = new DOMPaperParser();
+                try {
+                    builder = new DOMPaperParser();
+                } catch (PaperParserException e) {
+                    throw new ParserBuilderFactoryException(e);
+                }
                 break;
             case "SAX":
                 builder = new SAXPaperParser();
