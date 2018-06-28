@@ -38,11 +38,8 @@ class DOMPaperParser extends PaperParserBuilder {
 
     @Override
     public Set<Paper> parse(String fileName) throws PaperParserException {
-
-        Document document;
         try {
-            document = documentBuilder.parse(new File(fileName));
-            Element root = document.getDocumentElement();
+            Document document = documentBuilder.parse(new File(fileName));
 
             NodeList newspaperList = document.getElementsByTagName(PaperType.NEWSPAPER.name().toLowerCase());
             NodeList magazineList = document.getElementsByTagName(PaperType.MAGAZINE.name().toLowerCase());
@@ -74,20 +71,19 @@ class DOMPaperParser extends PaperParserBuilder {
         return paperSet;
     }
 
-    private Paper createPaper(Paper paper, Element element) {
-        NodeList mothlyList = element.getElementsByTagName(PaperProperty.MONTHLY.getValue());
+    private void createPaper(Paper paper, Element element) {
+        NodeList monthlyList = element.getElementsByTagName(PaperProperty.MONTHLY.getValue());
         NodeList colorList = element.getElementsByTagName(PaperProperty.COLOR.getValue());
         NodeList volumeList = element.getElementsByTagName(PaperProperty.VOLUME.getValue());
         NodeList firstPublicationList = element.getElementsByTagName(PaperProperty.FIRST_PUBLICATION.getValue());
 
-        paper.setMonthly(Boolean.parseBoolean(mothlyList.item(0).getTextContent()));
+        paper.setMonthly(Boolean.parseBoolean(monthlyList.item(0).getTextContent()));
         paper.setColor(Boolean.parseBoolean(colorList.item(0).getTextContent()));
         paper.setVolume(Integer.parseInt(volumeList.item(0).getTextContent()));
         paper.setFirstPublicationDate(firstPublicationList.item(0).getTextContent());
 
         paper.setId(Integer.parseInt(element.getAttribute(PaperAttribute.ID.name().toLowerCase())));
         paper.setTitle(element.getAttribute(PaperAttribute.TITLE.name().toLowerCase()));
-        return paper;
     }
 
     private Paper createNewspaper(Element newspaperElement) {

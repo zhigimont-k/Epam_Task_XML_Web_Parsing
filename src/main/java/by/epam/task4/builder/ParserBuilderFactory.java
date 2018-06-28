@@ -26,7 +26,7 @@ public class ParserBuilderFactory {
             case "SAX":
                 builder = new SAXPaperParser();
                 break;
-            case "StAX":
+            case "STAX":
                 builder = new StAXPaperParser();
                 break;
             default:
