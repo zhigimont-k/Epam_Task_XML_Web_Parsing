@@ -6,31 +6,35 @@ public final class CommandFactory {
     private CommandFactory() {
     }
 
-    public CommandFactory getInstance() {
+    public static CommandFactory getInstance() {
         if (instance == null) {
             instance = new CommandFactory();
         }
         return instance;
     }
 
-    public Command initCommand(CommandType type) {
-        Command command = null;
-        switch (type) {
-            case REGISTER:
+    public Command initCommand(String commandName) throws UnknownCommandException{
+        Command command;
+        switch (commandName) {
+            case "register":
                 command = new RegisterCommand();
                 break;
-            case LOGIN:
+            case "login":
                 command = new LoginCommand();
                 break;
-            case LOGOUT:
+            case "logout":
                 command = new LogoutCommand();
                 break;
-            case UPLOAD:
+            case "upload":
                 command = new UploadFileCommand();
                 break;
-            case CHANGE_LOCALE:
+            case "locale":
                 command = new ChangeLocaleCommand();
                 break;
+            case "parse":
+                command = new ParsingCommand();
+                break;
+            default: throw new UnknownCommandException("Unknown command");
         }
         return command;
     }

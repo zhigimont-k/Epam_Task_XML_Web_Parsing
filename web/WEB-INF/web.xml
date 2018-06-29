@@ -12,10 +12,27 @@
         <servlet-name>Controller1</servlet-name>
         <url-pattern>/app</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <display-name>Displayname</display-name>
+        <servlet-name>Controller2</servlet-name>
+        <servlet-class>by.epam.task4.controller.UploadFileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controller2</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
 </web-app>

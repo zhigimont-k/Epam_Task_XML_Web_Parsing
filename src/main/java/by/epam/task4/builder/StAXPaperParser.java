@@ -13,14 +13,10 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Set;
 
 class StAXPaperParser extends PaperParserBuilder {
-    private static Logger logger = LogManager.getLogger();
     private XMLInputFactory factory;
 
     StAXPaperParser() {
@@ -30,7 +26,7 @@ class StAXPaperParser extends PaperParserBuilder {
     @Override
     public Set<Paper> parse(String fileName) throws PaperParserException {
         String name;
-        try (InputStream inputStream = new FileInputStream(fileName)) {
+        try (InputStream inputStream = new FileInputStream(new File(getClass().getClassLoader().getResource(fileName).getFile()))) {
             XMLStreamReader reader = factory.createXMLStreamReader(inputStream);
 
             while (reader.hasNext()) {
@@ -40,15 +36,12 @@ class StAXPaperParser extends PaperParserBuilder {
                     if (PaperType.NEWSPAPER.name().equalsIgnoreCase(name)) {
                         Paper newspaper = buildNewspaper(reader);
                         paperSet.add(newspaper);
-                        logger.log(Level.INFO, "Added a paper: " + newspaper);
                     } else if (PaperType.MAGAZINE.name().equalsIgnoreCase(name)) {
                         Paper magazine = buildMagazine(reader);
                         paperSet.add(magazine);
-                        logger.log(Level.INFO, "Added a paper: " + magazine);
                     } else if (PaperType.BOOKLET.name().equalsIgnoreCase(name)) {
                         Paper booklet = buildBooklet(reader);
                         paperSet.add(booklet);
-                        logger.log(Level.INFO, "Added a paper: " + booklet);
                     }
                 }
             }

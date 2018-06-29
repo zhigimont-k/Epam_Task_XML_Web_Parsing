@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.Set;
 
 class DOMPaperParser extends PaperParserBuilder {
-    private static Logger logger = LogManager.getLogger();
     private DocumentBuilder documentBuilder;
 
     DOMPaperParser() throws PaperParserException {
@@ -35,7 +34,7 @@ class DOMPaperParser extends PaperParserBuilder {
     @Override
     public Set<Paper> parse(String fileName) throws PaperParserException {
         try {
-            Document document = documentBuilder.parse(new File(fileName));
+            Document document = documentBuilder.parse(new File(getClass().getClassLoader().getResource(fileName).getFile()));
 
             NodeList newspaperList = document.getElementsByTagName(PaperType.NEWSPAPER.name().toLowerCase());
             NodeList magazineList = document.getElementsByTagName(PaperType.MAGAZINE.name().toLowerCase());
@@ -45,21 +44,18 @@ class DOMPaperParser extends PaperParserBuilder {
                 Element newspaperElement = (Element) newspaperList.item(i);
                 Paper newspaper = createNewspaper(newspaperElement);
                 paperSet.add(newspaper);
-                logger.log(Level.INFO, "Added a paper: " + newspaper);
             }
 
             for (int i = 0; i < magazineList.getLength(); i++) {
                 Element magazineElement = (Element) magazineList.item(i);
                 Paper magazine = createMagazine(magazineElement);
                 paperSet.add(magazine);
-                logger.log(Level.INFO, "Added a paper: " + magazine);
             }
 
             for (int i = 0; i < bookletList.getLength(); i++) {
                 Element bookletElement = (Element) bookletList.item(i);
                 Paper booklet = createBooklet(bookletElement);
                 paperSet.add(booklet);
-                logger.log(Level.INFO, "Added a paper: " + booklet);
             }
         } catch (IOException | SAXException e) {
             throw new PaperParserException(e);

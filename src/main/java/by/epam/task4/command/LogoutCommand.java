@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class LogoutCommand implements Command {
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+    public void execute(HttpServletRequest request, HttpServletResponse response) {
+
     }
 }

@@ -19,7 +19,7 @@ public class Newspaper extends Paper {
 
     @Override
     public boolean getGloss() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("Newspaper can't be glossy");
+        return false;
     }
 
     @Override

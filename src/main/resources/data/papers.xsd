@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://myNameSpace.com"
+           xmlns="http://myNameSpace.com"
+           elementFormDefault="qualified">
+    <xs:element name="papers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="paper" minOccurs="2" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="paper" type="Paper" abstract="true"/>
+    <xs:element name="newspaper" type="Newspaper" substitutionGroup="paper"/>
+    <xs:element name="magazine" type="Magazine" substitutionGroup="paper"/>
+    <xs:element name="booklet" type="Booklet" substitutionGroup="paper"/>
+
+    <xs:complexType name="Paper">
+        <xs:sequence>
+            <xs:element name="monthly" type="xs:boolean" default="true"/>
+            <xs:element name="color" type="xs:boolean" default="false"/>
+            <xs:element name="volume" type="xs:positiveInteger"/>
+            <xs:element name="first-publication" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="title" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="Newspaper">
+        <xs:complexContent>
+            <xs:extension base="Paper">
+                <xs:sequence>
+                    <xs:element name="subscription-index" type="subscription-index" default="00000000"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Magazine">
+        <xs:complexContent>
+            <xs:extension base="Paper">
+                <xs:sequence>
+                    <xs:element name="gloss" type="xs:boolean" default="true"/>
+                    <xs:element name="subscription-index" type="subscription-index" default="00000000"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Booklet">
+        <xs:complexContent>
+            <xs:extension base="Paper">
+                <xs:sequence>
+                    <xs:element name="gloss" type="xs:boolean" default="true"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="subscription-index">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{6,8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

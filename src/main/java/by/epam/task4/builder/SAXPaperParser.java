@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.Set;
 
 class SAXPaperParser extends PaperParserBuilder {
-    private static Logger logger = LogManager.getLogger();
 
     SAXPaperParser() {
     }
@@ -29,7 +28,8 @@ class SAXPaperParser extends PaperParserBuilder {
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
             SAXParser saxParser = factory.newSAXParser();
-            saxParser.parse(new File(fileName), new PaperHandler());
+            saxParser.parse(new File(getClass().getClassLoader().getResource(fileName).getFile()),
+                    new PaperHandler());
         } catch (IOException | SAXException | ParserConfigurationException e) {
             throw new PaperParserException(e);
         }
@@ -92,7 +92,6 @@ class SAXPaperParser extends PaperParserBuilder {
                     PaperType.MAGAZINE.name().equalsIgnoreCase(qName) ||
                     PaperType.BOOKLET.name().equalsIgnoreCase(qName)) {
                 paperSet.add(paper);
-                logger.log(Level.INFO, "Added a paper: " + paper.toString());
             }
         }
     }

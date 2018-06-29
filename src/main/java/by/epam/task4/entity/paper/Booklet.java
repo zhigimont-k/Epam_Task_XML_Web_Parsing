@@ -20,7 +20,7 @@ public class Booklet extends Paper {
 
     @Override
     public int getSubscriptionIndex() throws UnsupportedOperationException {
-        throw new UnsupportedOperationException("Booklets can't have subscription index");
+        return 0;
     }
 
     @Override

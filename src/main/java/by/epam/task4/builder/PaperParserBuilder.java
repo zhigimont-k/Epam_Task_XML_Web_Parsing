@@ -5,7 +5,7 @@ import by.epam.task4.entity.paper.Paper;
 import java.util.HashSet;
 import java.util.Set;
 
-abstract class PaperParserBuilder {
+abstract public class PaperParserBuilder {
     protected Set<Paper> paperSet = new HashSet<>();
     protected enum PaperType{
         NEWSPAPER, MAGAZINE, BOOKLET

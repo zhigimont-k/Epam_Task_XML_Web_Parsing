@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<papers xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://myNameSpace.com"
+        xs:schemaLocation="http://www.example.com/papers.xsd">
+    <newspaper id="1" title="Weekly Newspaper">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>200</volume>
+        <first-publication>1970-12-12</first-publication>
+        <subscription-index>12445800</subscription-index>
+    </newspaper>
+
+    <newspaper id="2" title="Monthly Newspaper">
+        <monthly>true</monthly>
+        <color>false</color>
+        <volume>42</volume>
+        <first-publication>2000-04-02</first-publication>
+        <subscription-index>27866512</subscription-index>
+    </newspaper>
+
+    <magazine id="3" title="Some magazine">
+        <monthly>true</monthly>
+        <color>true</color>
+        <volume>300</volume>
+        <first-publication>2015-08-04</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>65827465</subscription-index>
+    </magazine>
+
+    <magazine id="4" title="Some other magazine">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>60</volume>
+        <first-publication>2008-01-11</first-publication>
+        <gloss>false</gloss>
+        <subscription-index>76683550</subscription-index>
+    </magazine>
+
+    <magazine id="5" title="Elle">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>120</volume>
+        <first-publication>1999-11-09</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>65588476</subscription-index>
+    </magazine>
+
+    <magazine id="6" title="Il">
+        <monthly>true</monthly>
+        <color>true</color>
+        <volume>185</volume>
+        <first-publication>1995-02-10</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>23315065</subscription-index>
+    </magazine>
+
+    <booklet id="7" title="Gastrofest booklet">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>2</volume>
+        <first-publication>2017-08-07</first-publication>
+        <gloss>false</gloss>
+    </booklet>
+
+    <booklet id="8" title="OSTIS booklet">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>5</volume>
+        <first-publication>2011-02-17</first-publication>
+        <gloss>false</gloss>
+    </booklet>
+
+    <booklet id="9" title="BSUIR booklet">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>3</volume>
+        <first-publication>2015-08-31</first-publication>
+        <gloss>false</gloss>
+    </booklet>
+
+    <magazine id="10" title="Yet another magazine">
+        <monthly>true</monthly>
+        <color>true</color>
+        <volume>40</volume>
+        <first-publication>2013-03-14</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>56648803</subscription-index>
+    </magazine>
+
+    <magazine id="11" title="We need more magazines">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>58</volume>
+        <first-publication>2013-10-15</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>11938803</subscription-index>
+    </magazine>
+
+    <magazine id="12" title="Another magazine">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>66</volume>
+        <first-publication>2003-01-12</first-publication>
+        <gloss>true</gloss>
+        <subscription-index>00198597</subscription-index>
+    </magazine>
+
+    <newspaper id="13" title="Some newspaper">
+        <monthly>false</monthly>
+        <color>true</color>
+        <volume>66</volume>
+        <first-publication>2007-11-20</first-publication>
+        <subscription-index>10097594</subscription-index>
+    </newspaper>
+
+    <newspaper id="14" title="Another newspaper">
+        <monthly>false</monthly>
+        <color>false</color>
+        <volume>24</volume>
+        <first-publication>2012-12-21</first-publication>
+        <subscription-index>21775649</subscription-index>
+    </newspaper>
+
+    <newspaper id="15" title="Newspaper Number N">
+        <monthly>false</monthly>
+        <color>false</color>
+        <volume>19</volume>
+        <first-publication>2011-05-29</first-publication>
+        <subscription-index>44726539</subscription-index>
+    </newspaper>
+
+    <newspaper id="16" title="Newspaper Number N+1">
+        <monthly>false</monthly>
+        <color>false</color>
+        <volume>21</volume>
+        <first-publication>1997-11-02</first-publication>
+        <subscription-index>32336284</subscription-index>
+    </newspaper>
+</papers>
