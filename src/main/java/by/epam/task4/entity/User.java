@@ -11,6 +11,10 @@ public class User extends Entity {
         this.password = password;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

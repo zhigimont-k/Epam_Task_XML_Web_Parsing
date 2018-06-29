@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <fmt:setLocale value="${sessionScope.lang}"/>
+    <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.text.signup" var="signupMessage"/>

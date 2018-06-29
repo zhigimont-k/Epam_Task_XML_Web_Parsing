@@ -1,12 +1,9 @@
 package by.epam.task4.command;
 
-import by.epam.task4.service.ChangeLocaleService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Locale;
 
 public class ChangeLocaleCommand implements Command {
     @Override
