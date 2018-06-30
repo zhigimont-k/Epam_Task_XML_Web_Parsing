@@ -17,7 +17,6 @@
     <title>Result</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/header.jsp"/>
 <div>
     <table>
     <tr>

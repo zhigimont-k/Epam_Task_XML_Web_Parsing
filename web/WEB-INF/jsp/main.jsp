@@ -12,7 +12,6 @@
 <body>
 
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
-<jsp:include page="/WEB-INF/jsp/upload.jsp"/>
 <jsp:include page="/WEB-INF/jsp/parsing.jsp"/>
 </body>
 </html>

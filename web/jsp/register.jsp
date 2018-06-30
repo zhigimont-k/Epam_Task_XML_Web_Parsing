@@ -17,17 +17,15 @@
     <title>${signupMessage}</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/jsp/header.jsp"/>
 <form name="signupForm" method="POST" action="app">
     <input type="hidden" name="command" value="register"/>
     ${loginLabel}<br/>
-    <input type="text" name="login" value=""/>
+    <input type="text" name="login" maxlength="20" minlength="4"/>
     <br/>${passwordLabel}<br/>
-    <input type="password" name="password" value=""/>
+    <input type="password" name="password" maxlength="32" minlength="10"/>
     <br/>
     <input type="submit" value="${signupButton}"/>
     <br/>
-    ${loginNow} <a href="/jsp/login.jsp">${signIn}</a>
 </form>
 </body>
 </html>

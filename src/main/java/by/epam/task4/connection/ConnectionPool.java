@@ -61,6 +61,7 @@ public class ConnectionPool {
                 createConnection();
             } catch (SQLException e) {
                 logger.log(Level.ERROR, e);
+                throw new RuntimeException(e);
             }
         }
 
@@ -100,7 +101,7 @@ public class ConnectionPool {
         }
 
         try {
-            DriverManager.registerDriver(DriverManager.getDriver(url));
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
         } catch (SQLException e) {
             logger.fatal("Couldn't register driver", e);
             throw new RuntimeException("Couldn't register driver", e);

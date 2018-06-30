@@ -22,12 +22,6 @@ public final class CommandFactory {
             case "login":
                 command = new LoginCommand();
                 break;
-            case "logout":
-                command = new LogoutCommand();
-                break;
-            case "upload":
-                command = new UploadFileCommand();
-                break;
             case "locale":
                 command = new ChangeLocaleCommand();
                 break;
